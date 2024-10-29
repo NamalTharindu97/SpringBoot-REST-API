@@ -3,10 +3,7 @@ package com.namal.roadtospringone.controller;
 import com.namal.roadtospringone.dto.UserDTO;
 import com.namal.roadtospringone.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,5 +18,10 @@ public class UserController {
     @GetMapping("/getUsers")
     public List<UserDTO> getUsers() {
         return userService.getAllUsers();
+    }
+
+    @PostMapping("/addUser")
+    public UserDTO createUser(@RequestBody UserDTO userDTO) {
+        return userService.saveUser(userDTO);
     }
 }
